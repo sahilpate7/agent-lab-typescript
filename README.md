@@ -3,6 +3,7 @@
 Social Bingo game for in-person mixers. Find people who match the questions and get 5 in a row!
 
 📚 **[View Lab Guide](workshop/GUIDE.md)**
+🚀 **[Start with setup flow](workshop/01-setup.md)**
 
 ---
 
@@ -23,6 +24,14 @@ Social Bingo game for in-person mixers. Find people who match the questions and 
 ## Prerequisites
 
 - [Node.js 22](https://nodejs.org/) or higher
+
+## Dev Container / Codespaces
+
+This repo already includes a `.devcontainer/devcontainer.json`.
+
+- **GitHub Codespaces:** create a Codespace from **your own repository** and it will use the devcontainer automatically.
+- **VS Code Dev Containers:** clone locally, then run `Dev Containers: Reopen in Container`.
+- **GitHub Pages publishing:** deployment is configured for your own repository.
 
 ## Run
 

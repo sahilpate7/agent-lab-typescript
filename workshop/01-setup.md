@@ -12,7 +12,7 @@ In this section, you'll set up your development environment and teach GitHub Cop
 
 ## 🔧 Initial Setup
 
-### Step 1: Create Your Repository
+### Step 1: Create Your Repository (Required)
 
 1. Open [github.com/copilot-dev-days/agent-lab-typescript](https://github.com/copilot-dev-days/agent-lab-typescript)
 2. Click **Use this template** → **Create a new repository**
@@ -26,12 +26,20 @@ In this section, you'll set up your development environment and teach GitHub Cop
 2. Under "Build and deployment", change *Deploy from a branch* to **GitHub Actions**
 3. ✅ Any commit will now publish to: `https://{username}.github.io/{repo-name}`
 
-### Step 3: Clone & Open in VS Code
+### Step 3: Choose How You'll Develop
+
+#### Option A: Clone locally in VS Code
 
 1. Open VS Code
 2. Run command: `Git: Clone` → `Clone from GitHub`
 3. Select your new repository
 4. Install recommended extensions (notification or `Extensions: Show Recommended Extensions`)
+
+#### Option B: Create a Codespace for your repo
+
+1. Open your repository on GitHub
+2. Click **Code** → **Codespaces** → **Create codespace on main**
+3. ✅ Codespace starts with your repo and devcontainer.
 
 ### Step 4: Run the Setup Agent
 
