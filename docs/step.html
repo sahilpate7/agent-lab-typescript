@@ -183,14 +183,16 @@
             }
 
             checkboxes.forEach((checkbox, index) => {
-                checkbox.removeAttribute('disabled');
                 checkbox.disabled = false;
-                checkbox.checked = checkedIndexes.includes(index) ? true : checkbox.checked;
+                checkbox.checked = checkedIndexes.includes(index) || checkbox.checked;
                 checkbox.setAttribute('aria-label', `Checklist item ${index + 1}`);
 
                 checkbox.addEventListener('change', () => {
                     const updated = Array.from(checkboxes)
-                        .flatMap((cb, i) => (cb.checked ? [i] : []));
+                        .reduce((acc, cb, i) => {
+                            if (cb.checked) acc.push(i);
+                            return acc;
+                        }, []);
                     localStorage.setItem(storageKey, JSON.stringify(updated));
                 });
             });
