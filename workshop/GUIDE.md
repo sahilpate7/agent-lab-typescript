@@ -32,7 +32,7 @@
 ## 🚀 Quick Setup
 
 ```
-# Option A (recommended for full lab with publishing):
+# Option A (recommended if you want to publish to GitHub Pages):
 # 1. Use template at github.com/copilot-dev-days/agent-lab-typescript
 # 2. Enable GitHub Pages (Settings > Pages > GitHub Actions)
 # 3. Clone in VS Code

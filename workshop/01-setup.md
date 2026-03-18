@@ -22,7 +22,7 @@ In this section, you'll set up your development environment and teach GitHub Cop
    - Visibility: **Public**
 3. ✅ Your own Soc Ops repo is ready!
 
-#### Option B: Open directly in Codespaces (no template/fork)
+#### Option B: Open directly in Codespaces (no template or fork)
 
 1. Open [codespaces/new/copilot-dev-days/agent-lab-typescript](https://github.com/codespaces/new/copilot-dev-days/agent-lab-typescript)
 2. Create a new Codespace
@@ -38,9 +38,7 @@ If you used **Option A**, continue with this step.
 2. Under "Build and deployment", change *Deploy from a branch* to **GitHub Actions**
 3. ✅ Any commit will now publish to: `https://{username}.github.io/{repo-name}`
 
-### Step 3: Clone & Open in VS Code
-
-If you used **Option A**, do this step.
+### Step 3 (Option A only): Clone & Open in VS Code
 
 1. Open VS Code
 2. Run command: `Git: Clone` → `Clone from GitHub`
