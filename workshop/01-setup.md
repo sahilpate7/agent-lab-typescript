@@ -28,6 +28,8 @@ In this section, you'll set up your development environment and teach GitHub Cop
 2. Create a new Codespace
 3. ✅ Environment starts with the repository devcontainer automatically.
 
+> ⚠️ If you want to deploy to **GitHub Pages**, create your own repository first using **Option A**.
+
 ### Step 2: Enable GitHub Pages
 
 If you used **Option A**, continue with this step.
