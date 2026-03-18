@@ -41,6 +41,8 @@
 # 1. Open in Codespaces:
 #    https://github.com/codespaces/new/copilot-dev-days/agent-lab-typescript
 #
+# Note: For GitHub Pages publishing, use Option A and create your own repo first.
+#
 # Then run:
 # /setup
 ```

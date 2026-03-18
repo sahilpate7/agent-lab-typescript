@@ -31,6 +31,7 @@ This repo already includes a `.devcontainer/devcontainer.json`.
 
 - **GitHub Codespaces:** open the repository in Codespaces (link above) and it will use the devcontainer automatically.
 - **VS Code Dev Containers:** clone locally, then run `Dev Containers: Reopen in Container`.
+- **GitHub Pages publishing:** create your own repository from the template first; Pages deployment is intended for your repo.
 
 ## Run
 
