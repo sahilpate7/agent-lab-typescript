@@ -12,6 +12,7 @@
             --success-green: #4ec9b0;
             --warning-yellow: #dcdcaa;
             --code-block-top-padding: 3.5rem;
+            --code-block-horizontal-padding: 1.25rem;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -163,7 +164,9 @@
         .markdown pre {
             position: relative;
             background: var(--bg-code); border: 1px solid var(--border-color);
-            border-radius: 8px; padding: var(--code-block-top-padding) 1.25rem 1.25rem; overflow-x: auto; margin: 1.5rem 0;
+            border-radius: 8px;
+            padding: var(--code-block-top-padding) var(--code-block-horizontal-padding) var(--code-block-horizontal-padding);
+            overflow-x: auto; margin: 1.5rem 0;
         }
         .markdown pre code { color: var(--text-primary); background: none; padding: 0; }
         .markdown .code-copy-btn {

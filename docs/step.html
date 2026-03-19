@@ -81,6 +81,7 @@
 
         const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/copilot-dev-days/agent-lab-typescript/main/workshop/';
         const CHECKBOX_STATE_KEY_PREFIX = 'workshop-checkboxes:';
+        const pendingCopyResetTimers = new Set();
 
         function getCurrentStepId() {
             const params = new URLSearchParams(window.location.search);
@@ -169,6 +170,7 @@
 
         function setupInteractiveCheckboxes(stepId) {
             const container = document.getElementById('markdown-content');
+            if (!container) return;
             const checkboxes = container.querySelectorAll('input[type="checkbox"]');
             if (!checkboxes.length) return;
 
@@ -217,6 +219,7 @@
 
         function setupCodeBlockCopyButtons() {
             const container = document.getElementById('markdown-content');
+            if (!container) return;
             const codeBlocks = container.querySelectorAll('pre');
 
             codeBlocks.forEach((pre, index) => {
@@ -234,7 +237,6 @@
                 liveRegion.className = 'sr-only';
                 liveRegion.setAttribute('aria-live', 'polite');
 
-                let resetTimer;
                 const resetButton = () => {
                     copyButton.textContent = 'Copy';
                     copyButton.dataset.state = 'idle';
@@ -255,7 +257,11 @@
                         liveRegion.textContent = 'Unable to copy code';
                     }
 
-                    resetTimer = setTimeout(resetButton, 2000);
+                    const resetTimer = setTimeout(() => {
+                        pendingCopyResetTimers.delete(resetTimer);
+                        resetButton();
+                    }, 2000);
+                    pendingCopyResetTimers.add(resetTimer);
                 });
 
                 pre.append(copyButton, liveRegion);
@@ -273,6 +279,9 @@
             document.title = `${step.title} | VS Code Copilot Agent Lab`;
 
             try {
+                pendingCopyResetTimers.forEach(timer => clearTimeout(timer));
+                pendingCopyResetTimers.clear();
+
                 const response = await fetch(`${GITHUB_RAW_BASE}${step.file}`);
                 if (!response.ok) throw new Error('Failed to load');
 
