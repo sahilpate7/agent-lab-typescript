@@ -6,7 +6,7 @@
 
 In this section, you'll set up your development environment and teach GitHub Copilot about your codebase.
 
-> 🎮 **[Play the Soc Ops game](../game/)** — See what you'll be building!
+> 🎮 **[Play the Bingo Mixer game](../game/)** — See what you'll be building!
 
 ---
 
@@ -16,9 +16,9 @@ In this section, you'll set up your development environment and teach GitHub Cop
 
 1. Open [github.com/copilot-dev-days/agent-lab-typescript](https://github.com/copilot-dev-days/agent-lab-typescript)
 2. Click **Use this template** → **Create a new repository**
-   - Name: `my-soc-ops`
+   - Name: `my-bingo-mixer`
    - Visibility: **Public**
-3. ✅ Your own Soc Ops repo is ready!
+3. ✅ Your own Bingo Mixer repo is ready!
 
 ### Step 2: Enable GitHub Pages
 

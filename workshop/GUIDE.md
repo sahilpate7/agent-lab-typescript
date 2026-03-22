@@ -1,9 +1,8 @@
-# Soc Ops — VS Code GitHub Copilot Agent Lab
-
+# Bingo Mixer — VS Code GitHub Copilot Agent Lab
 [← README](../README.md)
 
 ---
-
+- [ ] VS Code **v1.113+**
 > **Quick Reference Guide** — For detailed instructions, see the individual parts below.
 
 ---
@@ -22,7 +21,7 @@
 
 ## ⚡ Quick Checklist
 
-- [ ] VS Code **v1.107+**
+- [ ] VS Code **v1.113+**
 - [ ] GitHub Copilot (Pro/Business/Enterprise)
 - [ ] Git & Node 22+
 - [ ] Chat panel open
