@@ -4,34 +4,32 @@
 
 ---
 
-## Task 1: Agent Hooks — Test Gate for TDD Green
+## Task 1: Agent Hooks — Test Gate
 
-[Agent hooks](https://code.visualstudio.com/docs/copilot/customization/hooks) execute shell commands at key lifecycle points during agent sessions. We'll add a **Stop hook** to TDD Green so it can't stop until all tests pass.
+[Agent hooks](https://code.visualstudio.com/docs/copilot/customization/hooks) execute shell commands at key lifecycle points during agent sessions. We'll add a workspace-scoped **Stop hook** that gates *every* agent — no agent can finish until all tests pass.
 
 **Steps:**
 
-1. Open `.github/agents/tdd-green.agent.md`
-2. Prompt `Add a agent-scoped stop hook to tdd-green that checks if tests all passed`
-3. In `.github/agents/tdd-green.agent.md` the hook should be defined in the YAML frontmatter.
+1. Open the `.github/hooks/` folder
+2. Prompt: *Add an agent hook that runs the tests and blocks the agent from finishing if any test fails*
+3. The hook should be a JSON file in `.github/hooks/` (e.g. `stop-test-gate.json`), not inside any single agent file.
 
-✅ **Result:** TDD Green now has a safety net — it will keep working until all tests pass before handing back control.
+✅ **Result:** Every agent now has a safety net — it will keep working until all tests pass before handing back control.
 
 ---
 
 ## Task 2: New Bingo Pattern (TDD-Driven)
 
-Use the TDD to add a "Four Corners" bingo pattern. The hooks you set up will enforce TDD discipline on both sides — Red must produce failing tests, Green must make them pass.
+Use the TDD agent to add a "Four Corners" bingo pattern. The workspace stop hook you set up will enforce test discipline — every agent must leave tests passing before it hands back control.
 
 **Steps:**
 
-1. First, add a stop hook to TDD Red — open `.github/agents/tdd-red.agent.md` and prompt:
-   *Add a stop hook that runs the tests and verifies at least one test is failing — TDD Red isn't done until it has written a genuinely failing test*
-2. New chat with agent: `TDD`
-3. *Add a "Four Corners" bingo win pattern — all four corner squares (top-left, top-right, bottom-left, bottom-right) must be marked*
-4. Watch TDD orchestrate:
-   - **TDD Red** writes failing tests for Four Corners detection — hook fires on stop, keeps it going if tests aren't actually failing
+1. New chat with agent: `TDD`
+2. *Add a "Four Corners" bingo win pattern — all four corner squares (top-left, top-right, bottom-left, bottom-right) must be marked*
+3. Watch TDD orchestrate:
+   - **TDD Red** writes failing tests for Four Corners detection
    - Review the new tests in VS Code's test runner
-   - **TDD Green** implements the minimal code to pass — hook fires on stop, keeps it going if tests fail
+   - **TDD Green** implements the minimal code to pass — stop hook fires, keeps it going if tests fail
    - **TDD Refactor** cleans up the implementation
    - Click on any sub-agent while it runs to see its context and instructions
 4. Review the summary of changes
@@ -48,11 +46,11 @@ Inspect what happened under the hood — did the hook fire? How did agents commu
 
 1. Verify the hook loads: open the **GitHub Copilot Chat Hooks** output channel (Output panel → channel dropdown)
 2. Open Agent Debug Logs: gear icon (⚙️) in Chat view → **Show Agent Debug Logs**
-3. **Logs view:** filter for hook execution events during TDD Green
+3. **Logs view:** filter for hook execution events during the TDD cycle
 4. **Agent Flow Chart:** visualize the TDD → Red → Green → Refactor orchestration
 5. **Summary view:** review total tool calls and token usage
 
-**Bonus:** Click the ✨ sparkle icon to attach debug events to a new chat, then ask: `/troubleshoot did the Stop hook fire during TDD Green?`
+**Bonus:** Click the ✨ sparkle icon to attach debug events to a new chat, then ask: `/troubleshoot did the Stop hook fire during the TDD cycle?`
 
 ✅ **Result:** Full observability into multi-agent orchestration and hook execution.
 
@@ -104,7 +102,7 @@ Combine MCP, custom workflows, and subagent isolation in an agent for powerful w
 ## ✅ Part 4 Complete!
 
 You've learned how to:
-- Add agent hooks to enforce quality gates (Stop hook on TDD Green)
+- Add workspace-scoped agent hooks to enforce quality gates (Stop hook on all agents)
 - Use TDD to orchestrate Red → Green → Refactor automatically
 - Inspect agent behavior with Agent Debug Logs and Flow Charts
 - Use design-first agents for UI-driven development
