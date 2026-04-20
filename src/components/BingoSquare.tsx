@@ -8,27 +8,35 @@ interface BingoSquareProps {
 
 export function BingoSquare({ square, isWinning, onClick }: BingoSquareProps) {
   const baseClasses =
-    'relative flex items-center justify-center p-1 text-center border border-gray-300 rounded transition-all duration-150 select-none min-h-[60px] text-xs leading-tight';
+    'relative flex items-center justify-center p-2 text-center border-2 rounded-lg transition-all duration-200 select-none min-h-20 text-xs leading-tight font-body font-semibold cursor-pointer';
 
-  const stateClasses = square.isMarked
-    ? isWinning
-      ? 'bg-amber-200 border-amber-400 text-amber-900'
-      : 'bg-marked border-marked-border text-green-800'
-    : 'bg-white text-gray-700 active:bg-gray-100';
-
-  const freeSpaceClasses = square.isFreeSpace ? 'font-bold text-sm' : '';
+  let stateClasses = '';
+  
+  if (square.isFreeSpace) {
+    stateClasses = 'bg-gradient-to-br from-neon-cyan to-neon-magenta bg-opacity-10 border-neon-cyan text-neon-cyan glow-cyan cursor-default';
+  } else if (square.isMarked) {
+    if (isWinning) {
+      stateClasses = 'bg-gradient-to-br from-neon-purple via-neon-magenta to-neon-purple border-neon-purple text-bg-dark glow-purple shadow-lg';
+    } else {
+      stateClasses = 'bg-gradient-to-br from-neon-magenta to-neon-pink border-neon-cyan text-bg-dark border-glow-magenta';
+    }
+  } else {
+    stateClasses = 'bg-gradient-to-br from-bg-dark to-bg-darker border-neon-cyan text-text-primary hover:border-neon-magenta hover:shadow-md transition-all hover:from-bg-dark hover:to-bg-dark';
+  }
 
   return (
     <button
       onClick={onClick}
       disabled={square.isFreeSpace}
-      className={`${baseClasses} ${stateClasses} ${freeSpaceClasses}`}
+      className={`${baseClasses} ${stateClasses}`}
       aria-pressed={square.isMarked}
       aria-label={square.isFreeSpace ? 'Free space' : square.text}
     >
-      <span className="wrap-break-word hyphens-auto">{square.text}</span>
+      <span className="break-words hyphens-auto leading-tight">{square.text}</span>
       {square.isMarked && !square.isFreeSpace && (
-        <span className="absolute top-0.5 right-0.5 text-green-600 text-xs">✓</span>
+        <span className="absolute -top-1 -right-1 w-6 h-6 bg-neon-cyan rounded-full flex items-center justify-center text-bg-dark text-xs font-bold glow-cyan shadow-lg">
+          ✓
+        </span>
       )}
     </button>
   );

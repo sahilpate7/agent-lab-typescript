@@ -1,11 +1,22 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-accent: #2563eb;
-  --color-accent-light: #3b82f6;
-  --color-marked: #dcfce7;
-  --color-marked-border: #22c55e;
-  --color-bingo: #fbbf24;
+  --color-bg-dark: #0a0e27;
+  --color-bg-darker: #050710;
+  --color-neon-cyan: #00ff88;
+  --color-neon-magenta: #ff0088;
+  --color-neon-purple: #9d00ff;
+  --color-neon-pink: #ff006e;
+  --color-neon-lime: #39ff14;
+  --color-text-primary: #e0e0ff;
+  --color-text-secondary: #a0a0ff;
+  --color-accent: var(--color-neon-cyan);
+  --color-marked: var(--color-neon-magenta);
+  --color-marked-border: var(--color-neon-cyan);
+  --color-bingo: var(--color-neon-purple);
+  
+  --font-heading: "Space Mono", monospace;
+  --font-body: "JetBrains Mono", "Courier New", monospace;
 }
 
 html,
@@ -16,6 +27,120 @@ body,
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
+  background: linear-gradient(135deg, var(--color-bg-darker) 0%, var(--color-bg-dark) 100%);
+  color: var(--color-text-primary);
   -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+/* Cyberpunk Glow Effects */
+@layer utilities {
+  .glow-cyan {
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.8), 0 0 20px rgba(0, 255, 136, 0.4);
+    color: var(--color-neon-cyan);
+  }
+
+  .glow-magenta {
+    text-shadow: 0 0 10px rgba(255, 0, 136, 0.8), 0 0 20px rgba(255, 0, 136, 0.4);
+    color: var(--color-neon-magenta);
+  }
+
+  .glow-purple {
+    text-shadow: 0 0 15px rgba(157, 0, 255, 0.8), 0 0 30px rgba(157, 0, 255, 0.4);
+    color: var(--color-neon-purple);
+  }
+
+  .border-glow-cyan {
+    border-color: var(--color-neon-cyan);
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5), inset 0 0 10px rgba(0, 255, 136, 0.1);
+  }
+
+  .border-glow-magenta {
+    border-color: var(--color-neon-magenta);
+    box-shadow: 0 0 10px rgba(255, 0, 136, 0.5), inset 0 0 10px rgba(255, 0, 136, 0.1);
+  }
+
+  .border-glow-purple {
+    border-color: var(--color-neon-purple);
+    box-shadow: 0 0 15px rgba(157, 0, 255, 0.6), inset 0 0 15px rgba(157, 0, 255, 0.1);
+  }
+
+  .glass {
+    background: rgba(10, 14, 39, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(224, 224, 255, 0.1);
+  }
+
+  .glass-glow {
+    background: rgba(10, 14, 39, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(224, 224, 255, 0.2);
+  }
+
+  .neon-border {
+    border: 2px solid var(--color-neon-cyan);
+    box-shadow: 0 0 8px rgba(0, 255, 136, 0.4), inset 0 0 8px rgba(0, 255, 136, 0.05);
+  }
+
+  .neon-button {
+    background: linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-magenta));
+    color: var(--color-bg-dark);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.4), 0 0 40px rgba(255, 0, 136, 0.2);
+  }
+
+  .neon-button:hover {
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.6), 0 0 60px rgba(255, 0, 136, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .neon-button:active {
+    transform: translateY(0);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.3), 0 0 30px rgba(255, 0, 136, 0.1);
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-neon-cyan), var(--color-neon-magenta), var(--color-neon-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.4), inset 0 0 10px rgba(0, 255, 136, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.6), inset 0 0 15px rgba(0, 255, 136, 0.1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
 }
